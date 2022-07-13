@@ -30,14 +30,14 @@ if args.dataset == "wine":
     # wget http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv でダウンロード可能
     df = pd.read_csv('winequality-red.csv', sep=';')
     #入力データ
-    x = df[['density', 'volatile acidity']]
+    x = df[['density', 'volatile acidity']].values
     #予測対象のデータ
-    y = df[['alcohol']]
+    y = df[['alcohol']].values
 elif args.dataset == "boston":
     # wget http://lib.stat.cmu.edu/datasets/boston でダウンロード可能
     df = pd.read_csv('boston', sep="\s+", skiprows=22, header=None)
     x = np.hstack([df.values[::2, :], df.values[1::2, :2]])
-    y = raw_df.values[1::2, 2]
+    y = df.values[1::2, 2]
 elif args.dataset == "diabates":
     data = datasets.load_diabetes()
     x = data.data
