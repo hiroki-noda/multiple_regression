@@ -24,19 +24,17 @@ parser.add_argument(
 args = parser.parse_args()
 
 #データセットの準備
+# https://scikit-learn.org/stable/datasets.html
+# https://note.nkmk.me/python-sklearn-datasets-load-fetch/
 if args.dataset == "wine":
-    # multiple_regressionディレクトリ下で
-    # wget http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv
-    # が必要
+    # wget http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv でダウンロード可能
     df = pd.read_csv('winequality-red.csv', sep=';')
-    #入力データ（２次元）
+    #入力データ
     x = df[['density', 'volatile acidity']]
-    #予測対象のデータ（１次元）
+    #予測対象のデータ
     y = df[['alcohol']]
 elif args.dataset == "boston":
-    # multiple_regressionディレクトリ下で
-    # wget http://lib.stat.cmu.edu/datasets/boston
-    # が必要
+    # wget http://lib.stat.cmu.edu/datasets/boston でダウンロード可能
     df = pd.read_csv('boston', sep="\s+", skiprows=22, header=None)
     x = np.hstack([df.values[::2, :], df.values[1::2, :2]])
     y = raw_df.values[1::2, 2]
@@ -57,6 +55,7 @@ test_x = x[train_size:]
 test_y = y[train_size:]
 
 # 回帰モデルの設定
+# https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 if args.algo == "Least_Squares":
     model = linear_model.LinearRegression()
 elif args.algo == "Ridge":
@@ -73,5 +72,5 @@ model.fit(train_x, np.squeeze(train_y))
 
 # テストデータを用いてモデルの評価
 predict_y = model.predict(test_x)
-# 二乗誤差を出力
+# 実際の値との二乗誤差を出力
 print(np.linalg.norm(np.squeeze(test_y) - predict_y))
