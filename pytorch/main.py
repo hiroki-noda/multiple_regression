@@ -38,9 +38,9 @@ args = parser.parse_args()
 if args.dataset == "wine":
     # wget http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv でダウンロード可能
     df = pd.read_csv('winequality-red.csv', sep=';')
-    #入力データ
+    #x:入力データ
     x = df[['density', 'volatile acidity']].values
-    #予測対象のデータ
+    #y:予測対象のデータ
     y = df[['alcohol']].values
 elif args.dataset == "boston":
     # wget http://lib.stat.cmu.edu/datasets/boston でダウンロード可能
@@ -88,22 +88,25 @@ net = Net(x.size()[1], args.hidden_size, 1)
 #今回はニューラルネットワークの出力をある値に近づけるように学習させるので、二乗誤差を用いる
 loss_function = nn.MSELoss()
 #最適化関数
-#Adamは広く使われている関数で、学習が進むにつれて学習率を減衰させるような仕組みになっている
 optimizer = optim.Adam(net.parameters(), lr=args.lr)
 
 max_epoch = args.max_epoch
 for epoch in range(max_epoch):
     for batch in train_loader:
+        # dataloaderからミニバッチを取り出す
         x, y = batch
-        
+        # 勾配の初期化
         optimizer.zero_grad()
+        # xをニューラルネットワークに代入し、yを推定する
         y_hat = net(x)
-        
+        # 損失関数による誤差の計算
         loss = loss_function(y_hat.squeeze(), y.squeeze())
-        
+        # 誤差逆伝播
         loss.backward()
+        # 重みの更新
         optimizer.step()
 
+    # テストデータを用いて学習状況を確認
     with torch.no_grad():
         test_loss = []
         for batch in test_loader:
