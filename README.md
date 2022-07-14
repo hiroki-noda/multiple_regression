@@ -9,6 +9,7 @@
 ## scikit-learnに収録されているデータセット  
 * diabetes(糖尿病の進行状況)  
 * linnerud(生理学的測定結果と運動測定結果)  
+* california(カリフォルニアの住宅価格)  
 参考  
 https://scikit-learn.org/stable/datasets.html  
 https://note.nkmk.me/python-sklearn-datasets-load-fetch/  
@@ -29,8 +30,8 @@ https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 * 最小2乗回帰
 * リッジ回帰
 * 確率的勾配降下法（線形モデル）
-* サポートベクター回帰
 ## 非線形回帰
+* サポートベクター回帰
 * マルチレイヤーパーセプトロン(MLP)＝ニューラルネットワーク  
 
 ※他にもたくさんあるのでいろいろ追加してみてください  
@@ -41,3 +42,5 @@ sklearn
 `python sklearn/main.py --algo SVR --dataset boston`  
 pytorch  
 `python pytorch/main.py --hidden-size 64 --lr 5e-4 --batch-size 10 --dataset diabates` 
+
+`--plot`とすると、xのランダムな２軸と、y（正解値、予測値）を三次元にプロットしたグラフを出力します

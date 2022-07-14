@@ -13,6 +13,7 @@ import argparse
 from newral_net import Net
 
 from sklearn import datasets
+from sklearn.metrics import mean_squared_error
 
 #ハイパーパラメータの部分は入力で指定できるようにする
 parser = argparse.ArgumentParser()
@@ -117,7 +118,7 @@ for epoch in range(max_epoch):
         print('test_loss: ', np.array(test_loss).mean())
 
 with torch.no_grad():
-    predict = net(test_x)
-    print(np.linalg.norm(test_y.squeeze().numpy() - predict.squeeze().numpy()))
+    predict_y= net(test_x)
+    print("Mean Square Error={}".format(mean_squared_error(np.squeeze(test_y), predict_y)))
 
 
