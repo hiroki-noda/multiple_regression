@@ -119,6 +119,6 @@ for epoch in range(max_epoch):
 
 with torch.no_grad():
     predict_y= net(test_x)
-    print("Mean Square Error={}".format(mean_squared_error(np.squeeze(test_y), predict_y)))
+    print("Mean Square Error = {}".format(mean_squared_error(np.squeeze(test_y), predict_y)))
 
 

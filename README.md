@@ -35,7 +35,7 @@ https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 * マルチレイヤーパーセプトロン(MLP)＝ニューラルネットワーク  
 
 ※他にもたくさんあるのでいろいろ追加してみてください  
-※pytorchバージョンも作りましたが、基本的にscikit-learnのMLPで事足りると思うので必要ありません
+※pytorchバージョンも作りましたが、基本的にscikit-learnのMLPで事足りると思うので必要ないと思います
 
 # 実行例
 sklearn  
@@ -43,4 +43,5 @@ sklearn
 pytorch  
 `python pytorch/main.py --hidden-size 64 --lr 5e-4 --batch-size 10 --dataset diabates` 
 
-`--plot`とすると、xのランダムな２軸と、y（正解値、予測値）を三次元にプロットしたグラフを出力します
+`--plot`とすると、xのランダムな２軸と、y（正解値、予測値）を三次元にプロットしたグラフを出力します  
+![result](https://user-images.githubusercontent.com/41198657/179135411-96a9f8ab-eba8-4c97-98fa-1e5d572937db.png)

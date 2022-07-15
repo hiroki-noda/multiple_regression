@@ -89,7 +89,7 @@ def main():
     # テストデータを用いてモデルの評価
     predict_y = model.predict(test_x)
     # 実際の値との平均二乗誤差を出力
-    print("Mean Square Error={}".format(mean_squared_error(np.squeeze(test_y), predict_y)))
+    print("Mean Square Error = {}".format(mean_squared_error(np.squeeze(test_y), predict_y)))
     # グラフにプロット
     if args.plot:
         plot(test_x, test_y, predict_y)
@@ -107,6 +107,10 @@ def plot(test_x,test_y,predict_y):
     ax.scatter(x1, x2, test_y, label="Target")
     # モデルによって予測したデータ
     ax.scatter(x1, x2, predict_y, label="Predicted")
+    # 軸ラベルを設定
+    ax.set_xlabel("x1")
+    ax.set_ylabel("x2")
+    ax.set_zlabel("y")
     ax.legend()
     plt.show()
 
