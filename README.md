@@ -3,6 +3,7 @@
 * numpy  
 * pandas  
 * scikit-learn  
+* matplotlib
 * pytorch（任意）  
 (https://pytorch.org/get-started/locally/)  
 
@@ -14,9 +15,13 @@
 参考  
 https://scikit-learn.org/stable/datasets.html  
 https://note.nkmk.me/python-sklearn-datasets-load-fetch/  
+
 ### webからダウンロードしたデータセット  
 * wine（赤ワインの品質）  
+http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv  
 * boston（ボストンの住宅価格）  
+http://lib.stat.cmu.edu/datasets/boston  
+
 ### オリジナルのデータセットを使う場合  
 winequality-red.csvを参考に、csvファイルをpandasで読み込むのがよいでしょう  
 X = (x_1, x_2, ..., x_n) とyの組がNセットあるようなデータセットを用いる場合、  
@@ -27,10 +32,12 @@ X = (x_1, x_2, ..., x_n) とyの組がNセットあるようなデータセッ�
 ## アルゴリズム
 scikit-learnに収録されている回帰モデルなら基本的に使えるはずです  
 https://scikit-learn.org/stable/supervised_learning.html#supervised-learning  
+
 ### 線形回帰
 * 最小2乗回帰
 * リッジ回帰
 * 確率的勾配降下法（線形モデル）
+
 ### 非線形回帰
 * サポートベクター回帰
 * マルチレイヤーパーセプトロン(MLP)＝ニューラルネットワーク  

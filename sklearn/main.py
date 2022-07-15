@@ -112,6 +112,7 @@ def plot(test_x,test_y,predict_y):
     ax.set_ylabel("x2")
     ax.set_zlabel("y")
     ax.legend()
+    # グラフの表示
     plt.show()
 
 if __name__ == "__main__":
