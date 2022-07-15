@@ -56,6 +56,13 @@ def main():
         data = datasets.fetch_california_housing()
         x = data.data
         y = data.target
+    else:
+        raise NotImplementedError
+
+    # この時点で、
+    # x:（データ数×次元数）
+    # y:（データ数×１）or（データ数）
+    # の配列になっていればよい
 
     #データセットを8:2の割合で訓練用データとテスト用データにわける
     train_size = int(0.8 * len(x))
@@ -82,6 +89,8 @@ def main():
     elif args.algo == "MLP":
         # https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor
         model = MLPRegressor(hidden_layer_sizes=(100,), max_iter=500, activation='relu', solver='adam', learning_rate_init=0.001)
+    else:
+        raise NotImplementedError
 
     # 回帰モデルのフィッティング
     model.fit(train_x, np.squeeze(train_y))
