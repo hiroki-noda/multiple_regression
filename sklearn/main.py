@@ -34,6 +34,8 @@ def main():
     # https://note.nkmk.me/python-sklearn-datasets-load-fetch/
     if args.dataset == "wine":
         # wget http://pythondatascience.plavox.info/wp-content/uploads/2016/07/winequality-red.csv でダウンロード可能
+
+        # csvファイルの読み込み
         df = pd.read_csv('winequality-red.csv', sep=';')
         #x:入力データ
         x = df[['density', 'volatile acidity']].values
@@ -64,7 +66,8 @@ def main():
     # y:（データ数×１）or（データ数）
     # の配列になっていればよい
 
-    #データセットを8:2の割合で訓練用データとテスト用データにわける
+    # データセットを8:2の割合で訓練用データとテスト用データにわける
+    # 訓練用データとテスト用データが元々別に用意されている場合は、この操作は不要
     train_size = int(0.8 * len(x))
     train_x = x[:train_size]
     train_y = y[:train_size]
@@ -91,9 +94,12 @@ def main():
         model = MLPRegressor(hidden_layer_sizes=(100,), max_iter=500, activation='relu', solver='adam', learning_rate_init=0.001)
     else:
         raise NotImplementedError
+    
+    # yの形が（データ数×１）の場合、（データ数）に成形する
+    train_y = np.squeeze(train_y)
 
     # 回帰モデルのフィッティング
-    model.fit(train_x, np.squeeze(train_y))
+    model.fit(train_x, train_y)
 
     # テストデータを用いてモデルの評価
     predict_y = model.predict(test_x)

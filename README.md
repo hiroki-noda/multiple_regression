@@ -7,6 +7,9 @@
 * pytorch（任意）  
 (https://pytorch.org/get-started/locally/)  
 
+※ Windowsで環境構築する場合はこちらが参考になるでしょう  
+https://www.python.jp/install/anaconda/windows/install.html
+
 ## データセット  
 ### scikit-learnに収録されているデータセット  
 * diabetes(糖尿病の進行状況)  
